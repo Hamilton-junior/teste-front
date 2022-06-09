@@ -1,10 +1,12 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <h1>obrigado!</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: "PageThank",
 };
 </script>
 
