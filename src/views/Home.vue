@@ -106,7 +106,11 @@
         />
       </div>
       <div>
-        <img class="img-fluid" src="../assets/desktop-pagina-1.png" alt="" />
+        <img
+          class="img-fluid"
+          src="../assets/desktop-pagina-1.png"
+          alt="Image decorativa"
+        />
       </div>
     </div>
   </section>
@@ -285,6 +289,7 @@ export default {
   },
   created() {
     this.getAllStates();
+    document.title = "Sobre o profissional";
   },
 };
 </script>

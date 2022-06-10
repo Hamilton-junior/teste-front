@@ -154,7 +154,11 @@
           />
         </div>
         <div>
-          <img class="img-fluid" src="../assets/desktop-pagina-2.png" alt="" />
+          <img
+            class="img-fluid"
+            src="../assets/desktop-pagina-2.png"
+            alt="Imagem decorativa"
+          />
         </div>
       </div>
     </section>
@@ -269,6 +273,7 @@ export default {
   },
   created() {
     this.getAllSpecialties();
+    document.title = "Sobre o atendimento";
   },
 };
 </script>

@@ -1,6 +1,8 @@
 <template>
   <main class="d-flex justify-content-center align-items-center">
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </main>
 </template>
 
@@ -86,6 +88,20 @@ label {
   color: #483698;
   margin-bottom: 0;
   font-family: "Open Sans", sans-serif;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+}
+.v-enter {
+  transform: translate3d(0, -20px, 0);
+}
+.v-leave-to {
+  transform: translate3d(0, 20px, 0);
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
 }
 @media screen and (max-width: 768px) {
   img {

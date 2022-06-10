@@ -1,24 +1,40 @@
 # front-end-teste
 
-## Project setup
-```
-npm install
+<img src="./public/demonstracao.gif" alt="Demonstração do projeto sendo executado.">
+
+> Aplicação de um sistema de cadastro construida para teste de desenvolvedor front-end da empresa Fácil Consulta!
+
+<hr>
+
+## 🧪 Tecnologias
+
+- HTML
+- CSS com Bootstrap
+- Vue.js
+- vue-the-mask
+
+## 🚀 Como utilizar
+
+Clone o projeto e acesse a pasta.
+
+```bash
+git clone https://github.com/Hamilton-junior/teste-front.git
+
+cd teste-front
+
 ```
 
-### Compiles and hot-reloads for development
-```
+Execute este comando para instalar as dependências.
+
+```bash
+npm install
+
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Autor
 
-### Lints and fixes files
-```
-npm run lint
-```
+<strong> Hamilton de Souza </strong>
+<br>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<a href="https://www.linkedin.com/in/hamilton-junior-34451018a/" target="_blank"><img src="https://img.shields.io/badge/Linkedin-blue?style=for-the-badge&logo=Linkedin"></a>

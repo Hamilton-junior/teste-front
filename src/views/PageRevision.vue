@@ -28,7 +28,7 @@
             </li>
             <li>
               <span>Preço da consulta</span>
-              <p>{{ user.valueQuery }}</p>
+              <p>R$ {{ user.valueQuery }}</p>
             </li>
             <li>
               <span>Formas de pagamento da consulta</span>
@@ -63,6 +63,9 @@ export default {
     goHome() {
       this.$router.push({ name: "home" });
     },
+  },
+  created() {
+    document.title = "Revisão do cadastro";
   },
 };
 </script>

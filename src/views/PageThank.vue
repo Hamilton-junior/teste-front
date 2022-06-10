@@ -11,6 +11,9 @@
 <script>
 export default {
   name: "PageThank",
+  created() {
+    document.title = "Página de agradecimento";
+  },
 };
 </script>
 
@@ -49,5 +52,14 @@ a {
 a:hover {
   color: #483698;
   background: #ffe766;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  a {
+    width: 100%;
+  }
 }
 </style>
