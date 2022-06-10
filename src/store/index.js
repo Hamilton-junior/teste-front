@@ -14,11 +14,11 @@ export default new Vuex.Store({
       specialty: "",
       valueQuery: "",
       paymentMethods: {
-        pix: false,
-        money: false,
+        pix: "",
+        money: "",
         card: {
-          selected: false,
-          installments: null,
+          selected: "",
+          installments: "",
         },
       },
     },

@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ title }}</h1>
+  <h1 class="mb-5">{{ title }}</h1>
 </template>
 
 <script>
@@ -9,4 +9,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h1 {
+  font-size: 2.6rem;
+  color: #483698;
+  font-family: "Comfortaa", cursive;
+  font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+}
+</style>

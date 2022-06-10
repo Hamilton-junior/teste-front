@@ -1,48 +1,125 @@
 <template>
-  <div>
-    <TitlePages title="Sobre o Profissional" />
-    <label for="">Dados do profissional</label>
-    <form>
-      <label for="name">Nome completo*</label>
-      <input type="text" name="name" id="name" v-model.lazy.trim="name" />
-      <span v-if="errorNameMessage">{{ errorNameMessage }}</span>
+  <section class="d-flex flex-column justify-content-center">
+    <TitlePages title="Sobre o profissional" />
+    <div class="d-flex align-items-center gap-3">
+      <div class="form-container">
+        <h2 class="mb-4">Dados do profissional</h2>
+        <form class="d-flex flex-column">
+          <label for="name">Nome completo*</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            v-model.lazy.trim="name"
+            placeholder="Digite o nome completo"
+            :class="{ error: errorNameMessage }"
+          />
+          <ErroMessage v-if="errorNameMessage" :message="errorNameMessage" />
 
-      <label for="cpf">CPF*</label>
-      <input type="text" name="cpf" id="cpf" v-model.lazy.trim="cpf" />
-      <span v-if="errorCpfMessage">{{ errorCpfMessage }}</span>
+          <label for="cpf" class="mt-4">CPF*</label>
+          <the-mask
+            :mask="['###.###.###-##']"
+            type="text"
+            name="cpf"
+            id="cpf"
+            placeholder="Digite um CPF"
+            v-model.lazy.trim="cpf"
+            class="small"
+            :class="{ error: errorCpfMessage }"
+          >
+          </the-mask>
+          <ErroMessage v-if="errorCpfMessage" :message="errorCpfMessage" />
 
-      <label for="tel">Número de celular*</label>
-      <input type="tel" name="tel" id="tel" v-model.lazy.trim="numberTel" />
-      <span v-if="errorNumberTelMessage">{{ errorNumberTelMessage }}</span>
-      <div>
-        <label for="state">Estado*</label>
-        <select name="state" id="state" v-model.lazy.trim="state">
-          <option v-for="state in allStates" :value="state" :key="state.id">
-            {{ state.nome }}
-          </option>
-        </select>
-        <span v-if="errorStateMessage">{{ errorStateMessage }}</span>
-        <label for="city">Cidade*</label>
-        <select name="city" id="city" v-model.lazy.trim="city">
-          <option v-for="city in allCity" :value="city" :key="city.id">
-            {{ city.nome }}
-          </option>
-        </select>
-        <span v-if="errorCityMessage">{{ errorCityMessage }}</span>
+          <label for="tel" class="mt-4">Número de celular*</label>
+          <the-mask
+            type="tel"
+            name="tel"
+            id="tel"
+            placeholder="(00) 0 0000-0000"
+            v-model.lazy.trim="numberTel"
+            class="small"
+            :class="{ error: errorNumberTelMessage }"
+            :mask="['(##) ####-####', '(##) #####-####']"
+          >
+          </the-mask>
+          <ErroMessage
+            v-if="errorNumberTelMessage"
+            :message="errorNumberTelMessage"
+          />
+
+          <div class="d-flex mb-4 mt-4 align-items-center gap-1">
+            <fieldset class="d-flex flex-column">
+              <label for="state">Estado*</label>
+              <select
+                name="state"
+                id="state"
+                placeholder="Selecione"
+                v-model.lazy.trim="state"
+                :class="{ error: errorStateMessage }"
+              >
+                <option
+                  v-for="state in allStates"
+                  :value="state"
+                  :key="state.id"
+                >
+                  {{ state.nome }}
+                </option>
+              </select>
+              <ErroMessage
+                v-if="errorStateMessage"
+                :message="errorStateMessage"
+              />
+            </fieldset>
+            <fieldset class="d-flex flex-column">
+              <label for="city">Cidade*</label>
+              <select
+                name="city"
+                id="city"
+                v-model.lazy.trim="city"
+                :class="{ error: errorCityMessage }"
+              >
+                <option v-for="city in allCity" :value="city" :key="city.id">
+                  {{ city.nome }}
+                </option>
+              </select>
+              <ErroMessage
+                v-if="errorCityMessage"
+                :message="errorCityMessage"
+              />
+            </fieldset>
+          </div>
+        </form>
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <div class="d-flex detail">
+            <div class="detail blue"></div>
+            <div class="detail grey"></div>
+          </div>
+          <div>
+            <p class="detailText">1 de 2</p>
+          </div>
+        </div>
+        <ButtonNextPage
+          name="Próximo"
+          :nextPage="goNextPage"
+          backgroundColor="#483698"
+          colorText="#fff"
+        />
       </div>
-    </form>
-
-    <ButtonNextPage name="Próximo" :nextPage="goNextPage" />
-  </div>
+      <div>
+        <img class="img-fluid" src="../assets/desktop-pagina-1.png" alt="" />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import ButtonNextPage from "@/components/ButtonNextPage.vue";
 import { mapFields } from "@/helpers.js";
+import ErroMessage from "@/components/ErroMessage.vue";
 
 export default {
   name: "HomePage",
-  components: { ButtonNextPage },
+  components: { ButtonNextPage, ErroMessage },
   computed: {
     ...mapFields({
       fields: ["name", "cpf", "numberTel", "state", "city"],
@@ -116,14 +193,14 @@ export default {
     validateState(state) {
       let error;
       if (!state) {
-        error = "Campo estado não pode ser vazio!";
+        error = "Campo vazio!";
         return error;
       }
     },
     validateCity(city) {
       let error;
       if (!city) {
-        error = "Campo cidade não pode ser vazio!";
+        error = "Campo vazio!";
         return error;
       }
     },
@@ -212,4 +289,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+section {
+  max-width: 900px;
+}
+h2 {
+  font-family: "Comfortaa", cursive;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #282828;
+  margin-bottom: 20px;
+}
+</style>
